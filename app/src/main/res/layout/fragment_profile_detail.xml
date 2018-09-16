@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:orientation="vertical" >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profile Detail"
+        android:textSize="30dp"
+        android:layout_gravity="center"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+    <ImageView
+        android:id="@+id/profile_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/circle"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Shop Name"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/address_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textSize="20dp"/>
+        <EditText
+            android:id="@+id/address_name_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/landmark_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Landmark"
+            android:textSize="20dp"/>
+        <EditText
+            android:id="@+id/land_name_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/area_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Area Name"
+            android:textSize="20dp"/>
+        <EditText
+            android:id="@+id/area_name_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/city_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="City Name"
+            android:textSize="20dp"/>
+        <EditText
+            android:id="@+id/city_name_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/state_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="State Name"
+            android:textSize="20dp"/>
+        <EditText
+            android:id="@+id/state_name_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/go_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Go" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

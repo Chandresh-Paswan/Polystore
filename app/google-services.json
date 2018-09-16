@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "257892583386",
+    "firebase_url": "https://polystore-4e3f9.firebaseio.com",
+    "project_id": "polystore-4e3f9",
+    "storage_bucket": "polystore-4e3f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:257892583386:android:268b85c68bba6ef7",
+        "android_client_info": {
+          "package_name": "com.example.android.polystore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "257892583386-d98gv174190cmmbemumvb1t62n7udoc4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU1FqI-KRaTuKc7L1p-ONPdFFzqPkubjM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

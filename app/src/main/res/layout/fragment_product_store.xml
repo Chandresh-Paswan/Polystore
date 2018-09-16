@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find Store"
+        android:textSize="25dp"
+        android:layout_gravity="center"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edit_text_bg">
+
+        <AutoCompleteTextView
+            android:id="@+id/country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/reg_country"
+            android:text="India"
+            android:maxLines="1"
+            android:singleLine="true" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_bg">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="State"/>
+        <Spinner
+            android:id="@+id/state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Base.Widget.AppCompat.Spinner.Underlined">
+        </Spinner>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_bg">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="City"/>
+        <Spinner
+            android:id="@+id/city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Base.Widget.AppCompat.Spinner.Underlined">
+        </Spinner>
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_bg">
+
+        <AutoCompleteTextView
+            android:id="@+id/area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/reg_area"
+            android:maxLines="1"
+            android:singleLine="true" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_bg">
+
+        <AutoCompleteTextView
+            android:id="@+id/landmark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/reg_landmark"
+            android:maxLines="1"
+            android:singleLine="true" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_bg">
+
+        <AutoCompleteTextView
+            android:id="@+id/store_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Store Name"
+            android:maxLines="1"
+            android:singleLine="true" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="next" />
+
+
+
+</LinearLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="5dp"
+        card_view:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/producer_image"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/chandu" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/shop_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="30dp"
+                    android:text="Chandu General store" />
+
+                <TextView
+                    android:id="@+id/registration_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="30dp"
+                    android:text="Reg. Date - 12 Dec,2018" />
+
+                <TextView
+                    android:id="@+id/mobile_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="30dp"
+                    android:text="Mob Number-895176899" />
+                />
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

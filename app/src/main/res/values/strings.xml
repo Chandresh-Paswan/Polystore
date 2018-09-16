@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">Polystore</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_forget">Forget Password ?</string>
+    <string name="prompt_email">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_register">register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="personal_memoranda">Personal Memoranda</string>
+    <string name="reg">Registration</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="employee_name">Employee Name</string>
+    <string name="designation">Designation</string>
+    <string name="user_name_reg">User Name</string>
+    <string name="home_address">Home Address</string>
+    <string name="reg_email">Email</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="emp_id">Employee ID</string>
+    <string name="reg_password">New Password</string>
+    <string name="reg_new_password">Confirm Password</string>
+    <string name="blood_group">Blood Group</string>
+    <string name="date_of_join">Date of Joining</string>
+    <string name="reg_first_name">First Name</string>
+    <string name="user_pass">User Password</string>
+    <string name="reg_mobile_number">Mobile Number</string>
+    <string name="user_name">User Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="business_profile">Business Profile</string>
+    <string name="current_add">Current Address</string>
+    <string name="branch_address">Branch Id</string>
+    <string name="reg_area">Area</string>
+    <string name="telephone">Telephone</string>
+    <string name="reg_landmark">Landmark</string>
+    <string name="mobile">Mobile</string>
+    <string name="reg_address">Address</string>
+    <string name="email">Email</string>
+    <string name="reg_country">Country</string>
+    <string name="route">Route</string>
+    <string name="reg_state">State</string>
+    <string name="sm_name">SM Name</string>
+    <string name="reg_city">City</string>
+    <string name="title">Branch</string>
+    <string name="village_name">Village Name</string>
+    <string name="title_activity_navigation_home">Polystore</string>
+    <string name="setting_enabled" translatable="false">EnabledSetting</string>
+    <string name="location_permissions">Location Permissions</string>
+    <string name="ringer_permissions">Ringer Permissions</string>
+    <string name="need_location_permission_message">You need to enable location permissions first</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="touch_to_relaunch">Touch to launch the app.</string>
+    <string name="back_to_normal">Back to normal</string>
+    <string name="silent_mode_activated">Silent mode activated</string>
+
+
+    <string name="action_settings">Settings</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="registration_store_name">Store Name</string>
+    <string name="registration_date">Registration Date</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="minimum_password">Minimum Length greater than 6</string>
+    <string name="auth_failed">Authentication Failed</string>
+    <string name="lbl_forgot_password">Forgot password?</string>
+    <string name="hint_email">Email</string>
+    <string name="btn_reset_password">Reset Password</string>
+    <string name="btn_back"><![CDATA[<< Back]]></string>
+    <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
+    <string name="enable_geofences">Enable Geofances</string>
+</resources>

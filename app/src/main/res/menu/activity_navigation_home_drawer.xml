@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/profile_item"
+            android:icon="@drawable/circle"
+            android:title="Profile" />
+        <item
+            android:id="@+id/producers"
+            android:icon="@drawable/circle"
+            android:title="Producers" />
+
+        <item
+            android:id="@+id/cust_order_details"
+            android:icon="@drawable/createorder"
+            android:title="Customer Order Details" />
+        <item
+            android:id="@+id/create_orders"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Create a new order" />
+
+        <item
+            android:id="@+id/notification"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Notification" />
+        <item
+            android:id="@+id/contact_us"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Contact Us" />
+
+        <item
+            android:id="@+id/setting"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Setting" />
+        <item
+            android:id="@+id/forget_password"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Forget Password" />
+        <item
+            android:id="@+id/sign_out"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Sign Out" />
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+
+        </menu>
+    </item>
+
+</menu>
