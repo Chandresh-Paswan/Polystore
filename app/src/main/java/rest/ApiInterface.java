@@ -1,8 +1,13 @@
 package rest;
 
+import android.database.Observable;
+
 import model.MoviesResponse;
+import model.Registration;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 /**
@@ -15,4 +20,8 @@ public interface ApiInterface {
 
     @GET("movie/{id}")
     Call<MoviesResponse> getResults(@Query("api_key") String apiKey);
+
+    @POST("api/register")
+    Call<Registration> registration(@Body Registration reg);
+
 }

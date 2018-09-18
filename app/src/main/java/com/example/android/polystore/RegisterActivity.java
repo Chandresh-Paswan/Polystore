@@ -7,6 +7,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -23,6 +24,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.Calendar;
 
 
+import model.Registration;
+import rest.ApiClient;
+import rest.ApiInterface;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import util.AlertDialogManager;
 import util.ConnectionDetector;
 import util.Utils;
@@ -221,6 +228,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     return;
                 }
 
+                registrationSend();
+
 
                 progressBar.setVisibility(View.VISIBLE);
                 //create user
@@ -376,6 +385,46 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         }
     }*/
+
+   public void registrationSend(){
+
+       String version="7";
+       String citycode="001";
+       String statecode="007";
+       String reg_date="25/08/2018";
+       String store_name="Lala";
+       boolean active=false;
+       String area_id="001";
+       String landmark_id="998";
+       String file_id="88";
+       String image_path="bccbcc";
+
+       Registration register=new Registration(date_birth,password,version,first_name,last_name,
+               address,area,landmark,citycode,statecode,country,user_name,
+               reg_date,store_name,mobile_number,active,email,area_id,landmark_id,state,
+               city,file_id,image_path);
+
+
+       ApiInterface apiService =
+               ApiClient.getClient().create(ApiInterface.class);
+
+       Call<Registration> call = (Call<Registration>) apiService.registration(register);
+       call.enqueue(new Callback<Registration>() {
+           public static final String TAG ="Result Registration" ;
+
+           @Override
+           public void onResponse(Call<Registration>call, Response<Registration> response) {
+
+               Log.d(TAG, "Number of movies received: " + response);
+           }
+
+           @Override
+           public void onFailure(Call<Registration>call, Throwable t) {
+               // Log error here since request failed
+               Log.e(TAG, t.toString());
+           }
+       });
+   }
 
 }
 
