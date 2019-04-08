@@ -31,7 +31,7 @@
         android:ems="10"
         android:drawableLeft="@drawable/user_icon"
         android:hint="  Michaelclarke@gmail.com"
-        android:text="  Michaelclarke@gmail.com"
+        android:text="chandreshpas@gmail.com"
         android:inputType="textPersonName" />
 
     <EditText
@@ -42,7 +42,7 @@
         android:drawableLeft="@drawable/password_icon"
         android:background="@drawable/white_solid"
         android:ems="10"
-        android:text="sfsfggg"
+        android:text="1234567"
         android:hint="**********"
         android:inputType="textPassword" />
 

@@ -16,10 +16,14 @@ import android.widget.DatePicker;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.Toast;
+
+import com.example.android.polystore.model.RegistrationPojo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
@@ -66,6 +70,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
      first_name, last_name ,date_birth, mobile_number,area ,landmark ,address ,country,
      state, city,store_reg_name,store_reg_date;
 
+    DatabaseReference databaseRegistration;
+    String consumer;
+    String producer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +80,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_register);
 
         cd = new ConnectionDetector(getApplicationContext());
+        databaseRegistration= FirebaseDatabase.getInstance().getReference("Consumer");
 
         // Check if Internet present
         isInternetPresent = cd.isConnectingToInternet();
@@ -313,16 +321,17 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 mStoreRegName.setVisibility(View.GONE);
                 mRegDate.setVisibility(View.GONE);
                 mDateBirth.setVisibility(View.VISIBLE);
-                String consumer="role_consumer";
+                consumer="role_consumer";
+               // databaseRegistration= FirebaseDatabase.getInstance().getReference(consumer);
+
                 break;
 
             case R.id.radiobutton_producer:
                 mStoreRegName.setVisibility(View.VISIBLE);
                 mRegDate.setVisibility(View.VISIBLE);
                 mDateBirth.setVisibility(View.GONE);
-
-                String producer="role_producer";
-
+                producer="role_producer";
+                //databaseRegistration= FirebaseDatabase.getInstance().getReference(producer);
                 store_name = mStoreName.getText().toString().trim();
                 register_date = mRegisterDate.getText().toString().trim();
 
@@ -388,42 +397,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
    public void registrationSend(){
 
-       String version="7";
-       String citycode="001";
-       String statecode="007";
-       String reg_date="25/08/2018";
-       String store_name="Lala";
-       boolean active=false;
-       String area_id="001";
-       String landmark_id="998";
-       String file_id="88";
-       String image_path="bccbcc";
+       String id=databaseRegistration.push().getKey();
+       RegistrationPojo registrationPojo=new RegistrationPojo(id,email, password, store_name, register_date, user_name, confirm_password,
+               first_name, last_name ,date_birth, mobile_number,area ,landmark ,address ,country,
+               state, city,store_reg_name,store_reg_date);
 
-       Registration register=new Registration(date_birth,password,version,first_name,last_name,
-               address,area,landmark,citycode,statecode,country,user_name,
-               reg_date,store_name,mobile_number,active,email,area_id,landmark_id,state,
-               city,file_id,image_path);
+       databaseRegistration.child(id).setValue(registrationPojo);
 
-
-       ApiInterface apiService =
-               ApiClient.getClient().create(ApiInterface.class);
-
-       Call<Registration> call = (Call<Registration>) apiService.registration(register);
-       call.enqueue(new Callback<Registration>() {
-           public static final String TAG ="Result Registration" ;
-
-           @Override
-           public void onResponse(Call<Registration>call, Response<Registration> response) {
-
-               Log.d(TAG, "Number of movies received: " + response);
-           }
-
-           @Override
-           public void onFailure(Call<Registration>call, Throwable t) {
-               // Log error here since request failed
-               Log.e(TAG, t.toString());
-           }
-       });
    }
 
 }
