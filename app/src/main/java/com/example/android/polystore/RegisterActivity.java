@@ -359,41 +359,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
-   /* public void onCheckboxClicked(View view) {
-        // Is the view now checked?
-        boolean checked = ((CheckBox) view).isChecked();
-
-        // Check which checkbox was clicked
-        switch(view.getId()) {
-            case R.id.radiobutton_consumer:
-                if (checked){
-
-
-                }
-                break;
-
-            case R.id.radiobutton_producer:
-                if (checked){
-
-
-
-                    if (TextUtils.isEmpty(store_reg_name)) {
-                        Toast.makeText(getApplicationContext(), "Enter Store Registration Name!", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
-                    if (TextUtils.isEmpty(store_reg_date)) {
-                        Toast.makeText(getApplicationContext(), "Enter Store Registration Date!", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
-
-                }
-
-                break;
-
-        }
-    }*/
 
    public void registrationSend(){
 
