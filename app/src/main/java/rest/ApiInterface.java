@@ -1,7 +1,5 @@
 package rest;
 
-import android.database.Observable;
-
 import model.MoviesResponse;
 import model.Registration;
 import retrofit2.Call;

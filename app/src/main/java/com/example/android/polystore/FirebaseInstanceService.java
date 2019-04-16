@@ -8,8 +8,6 @@ import android.util.Log;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
-import static android.content.ContentValues.TAG;
-
 public class FirebaseInstanceService extends FirebaseInstanceIdService {
 
     private static final String TAG = FirebaseInstanceService.class.getSimpleName();

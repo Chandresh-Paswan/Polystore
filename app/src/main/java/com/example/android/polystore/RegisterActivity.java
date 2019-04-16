@@ -2,38 +2,19 @@ package com.example.android.polystore;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.support.annotation.NonNull;
+import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.Toast;
-
-import com.example.android.polystore.model.RegistrationPojo;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.Calendar;
 
-
-import model.Registration;
-import rest.ApiClient;
-import rest.ApiInterface;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import util.AlertDialogManager;
 import util.ConnectionDetector;
 import util.Utils;
@@ -52,27 +33,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     TextInputLayout mStoreRegName, mRegDate;
 
     Button registration_submit;
-    private FirebaseAuth auth;
     private ProgressBar progressBar;
     private int mYear, mMonth, mDay;
-
-
-    // flag for Internet connection status
     Boolean isInternetPresent = false;
-
-    // Connection detector class
     ConnectionDetector cd;
-
-    // Alert Dialog Manager
     AlertDialogManager alert = new AlertDialogManager();
 
     String email, password, store_name, register_date, user_name, confirm_password,
      first_name, last_name ,date_birth, mobile_number,area ,landmark ,address ,country,
      state, city,store_reg_name,store_reg_date;
-
-    DatabaseReference databaseRegistration;
-    String consumer;
-    String producer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,9 +49,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_register);
 
         cd = new ConnectionDetector(getApplicationContext());
-        databaseRegistration= FirebaseDatabase.getInstance().getReference("Consumer");
 
-        // Check if Internet present
         isInternetPresent = cd.isConnectingToInternet();
         if (!isInternetPresent) {
             // Internet Connection is not present
@@ -92,10 +59,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return;
         }
 
-        //Get Firebase auth instance
-        auth = FirebaseAuth.getInstance();
 
-        // Pass on the activity and color resourse
         Utils.darkenStatusBar(this, R.color.colorPrimaryDark);
 
         mConsumer = (RadioButton) findViewById(R.id.radiobutton_consumer);
@@ -236,30 +200,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     return;
                 }
 
-                registrationSend();
-
+                startActivity(new Intent(RegisterActivity.this, NavigationHome.class));
+                finish();
 
                 progressBar.setVisibility(View.VISIBLE);
-                //create user
-                auth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                Toast.makeText(RegisterActivity.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
-                                progressBar.setVisibility(View.GONE);
 
-                                // If sign in fails, display a message to the user. If sign in succeeds
-                                // the auth state listener will be notified and logic to handle the
-                                // signed in user can be handled in the listener.
-                                if (!task.isSuccessful()) {
-                                    Toast.makeText(RegisterActivity.this, "Authentication failed." + task.getException(),
-                                            Toast.LENGTH_SHORT).show();
-                                } else {
-                                    startActivity(new Intent(RegisterActivity.this, NavigationHome.class));
-                                    finish();
-                                }
-                            }
-                        });
             }
         });
 
@@ -321,8 +266,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 mStoreRegName.setVisibility(View.GONE);
                 mRegDate.setVisibility(View.GONE);
                 mDateBirth.setVisibility(View.VISIBLE);
-                consumer="role_consumer";
-               // databaseRegistration= FirebaseDatabase.getInstance().getReference(consumer);
 
                 break;
 
@@ -330,8 +273,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 mStoreRegName.setVisibility(View.VISIBLE);
                 mRegDate.setVisibility(View.VISIBLE);
                 mDateBirth.setVisibility(View.GONE);
-                producer="role_producer";
-                //databaseRegistration= FirebaseDatabase.getInstance().getReference(producer);
                 store_name = mStoreName.getText().toString().trim();
                 register_date = mRegisterDate.getText().toString().trim();
 
@@ -358,18 +299,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
          progressBar.setVisibility(View.GONE);
 
     }
-
-
-   public void registrationSend(){
-
-       String id=databaseRegistration.push().getKey();
-       RegistrationPojo registrationPojo=new RegistrationPojo(id,email, password, store_name, register_date, user_name, confirm_password,
-               first_name, last_name ,date_birth, mobile_number,area ,landmark ,address ,country,
-               state, city,store_reg_name,store_reg_date);
-
-       databaseRegistration.child(id).setValue(registrationPojo);
-
-   }
 
 }
 

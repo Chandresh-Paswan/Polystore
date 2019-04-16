@@ -12,8 +12,6 @@ import com.google.firebase.messaging.RemoteMessage;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import static android.content.ContentValues.TAG;
-
 public class FirebaseMsgService extends FirebaseMessagingService {
     private static final String TAG = FirebaseMsgService.class.getSimpleName();
 
