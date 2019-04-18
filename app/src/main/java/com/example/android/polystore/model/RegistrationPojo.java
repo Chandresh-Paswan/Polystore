@@ -2,16 +2,11 @@ package com.example.android.polystore.model;
 
 public class RegistrationPojo {
 
-    String id,email, password, store_name, register_date, user_name, confirm_password,
+    String email, password, store_name, register_date, user_name, confirm_password,
             first_name, last_name ,date_birth, mobile_number,area ,landmark ,address ,country,
             state, city,store_reg_name,store_reg_date;
 
-    public RegistrationPojo(){
-
-    }
-
-    public RegistrationPojo(String id,String email, String password, String store_name, String register_date, String user_name, String confirm_password, String first_name, String last_name, String date_birth, String mobile_number, String area, String landmark, String address, String country, String state, String city, String store_reg_name, String store_reg_date) {
-        this.id=id;
+    public RegistrationPojo(String email, String password, String store_name, String register_date, String user_name, String confirm_password, String first_name, String last_name, String date_birth, String mobile_number, String area, String landmark, String address, String country, String state, String city, String store_reg_name, String store_reg_date) {
         this.email = email;
         this.password = password;
         this.store_name = store_name;
@@ -30,10 +25,6 @@ public class RegistrationPojo {
         this.city = city;
         this.store_reg_name = store_reg_name;
         this.store_reg_date = store_reg_date;
-    }
-
-    public String getId(){
-        return id;
     }
 
     public String getEmail() {

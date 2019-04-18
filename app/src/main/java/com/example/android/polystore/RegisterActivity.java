@@ -1,11 +1,11 @@
 package com.example.android.polystore;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -13,12 +13,27 @@ import android.widget.DatePicker;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
 import java.util.Calendar;
 
 import util.AlertDialogManager;
 import util.ConnectionDetector;
 import util.Utils;
-
 
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
@@ -38,6 +53,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     Boolean isInternetPresent = false;
     ConnectionDetector cd;
     AlertDialogManager alert = new AlertDialogManager();
+    RequestQueue requestQueue;
 
     String email, password, store_name, register_date, user_name, confirm_password,
      first_name, last_name ,date_birth, mobile_number,area ,landmark ,address ,country,
@@ -49,6 +65,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_register);
 
         cd = new ConnectionDetector(getApplicationContext());
+        requestQueue = Volley.newRequestQueue(this);
+
 
         isInternetPresent = cd.isConnectingToInternet();
         if (!isInternetPresent) {
@@ -200,8 +218,140 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     return;
                 }
 
-                startActivity(new Intent(RegisterActivity.this, NavigationHome.class));
-                finish();
+                //startActivity(new Intent(RegisterActivity.this, NavigationHome.class));
+                //finish();
+
+
+             /*   //building retrofit object
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl(BASE_URL)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+                //Defining retrofit api service
+                ApiInterface service = retrofit.create(ApiInterface.class);
+
+                //Defining the user object as we need to pass it with the call
+                RegistrationPojo registrationPojo = new RegistrationPojo( email, password, store_name, register_date, user_name, confirm_password,
+                        first_name, last_name ,date_birth, mobile_number,area ,landmark ,address ,country,
+                        state, city,store_reg_name,store_reg_date);
+
+                //defining the call
+                Call<Result> call = service.createUser(
+                        registrationPojo.getEmail(),
+                        registrationPojo.getPassword(),
+                        registrationPojo.getStore_name(),
+                        registrationPojo.getRegister_date(),
+                        registrationPojo.getUser_name(),
+                        registrationPojo.getConfirm_password(),
+                        registrationPojo.getFirst_name(),
+                        registrationPojo.getLast_name(),
+                        registrationPojo.getDate_birth(),
+                        registrationPojo.getMobile_number(),
+                        registrationPojo.getArea(),
+                        registrationPojo.getLandmark(),
+                        registrationPojo.getAddress(),
+                        registrationPojo.getCountry(),
+                        registrationPojo.getState(),
+                        registrationPojo.getCity(),
+                        registrationPojo.getStore_reg_name(),
+                        registrationPojo.getStore_reg_date()
+
+
+                );
+
+                //calling the api
+                call.enqueue(new Callback<Result>() {
+                    @Override
+                    public void onResponse(Call<Result> call, Response<Result> response) {
+
+
+                        //displaying the message from the response as toast
+                        //Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Result> call, Throwable t) {
+
+                        Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });*/
+
+
+                String URL = "http://3.17.57.170:8080/polystore-server/api/register";
+
+                JSONObject jsonBody = new JSONObject();
+
+
+                try {
+
+                    jsonBody.put("login", "chandresh007");
+                    jsonBody.put("firstName", "Chandresh");
+                    jsonBody.put("lastName", "Paswan");
+                    jsonBody.put("email", "chandreshpas@gmail.com");
+                    jsonBody.put("password", "chandresh");
+                    jsonBody.put("area", "Howrah");
+                    jsonBody.put("landmark", "Pilkhana");
+                    jsonBody.put("address", "Howrah");
+                    jsonBody.put("dateOfBirth", "1990-06-26");
+                    jsonBody.put("cityCode", 241);
+                    jsonBody.put("stateCode", 34);
+                    jsonBody.put("phoneNo", 8951748991L);
+                    jsonBody.put("stateName", "West Bengal");
+                    jsonBody.put("cityName", "Howrah");
+                    jsonBody.put("country", "IN");
+                    jsonBody.put("imageUrl", null);
+                    jsonBody.put("activated", true);
+                    jsonBody.put("langKey", "en");
+                    jsonBody.put("createdBy", "chandresh");
+                    jsonBody.put("createdDate", null);
+                    jsonBody.put("lastModifiedBy", "chandresh");
+                    jsonBody.put("lastModifiedDate", null);
+                    jsonBody.put("role", "ROLE_CONSUMER");
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                final String requestBody = jsonBody.toString();
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                }) {
+                    @Override
+                    public String getBodyContentType() {
+                        return "application/json; charset=utf-8";
+                    }
+
+                    @Override
+                    public byte[] getBody() throws AuthFailureError {
+                        try {
+                            return requestBody == null ? null : requestBody.getBytes("utf-8");
+                        } catch (UnsupportedEncodingException uee) {
+                            VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", requestBody, "utf-8");
+                            return null;
+                        }
+                    }
+
+                    @Override
+                    protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                        String responseString = "";
+                        if (response != null) {
+                            responseString = String.valueOf(response.statusCode);
+                            // can get more details such as response.headers
+                        }
+                        return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+                    }
+                };
+
+                Log.d("conversionerror", "posted");
+                requestQueue.add(stringRequest);
 
                 progressBar.setVisibility(View.VISIBLE);
 
