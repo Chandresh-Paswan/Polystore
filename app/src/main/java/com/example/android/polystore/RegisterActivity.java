@@ -58,6 +58,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     String email, password, store_name, register_date, user_name, confirm_password,
      first_name, last_name ,date_birth, mobile_number,area ,landmark ,address ,country,
      state, city,store_reg_name,store_reg_date;
+    String role="ROLE_CONSUMER";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -285,29 +286,31 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
                 try {
 
-                    jsonBody.put("login", "chandresh007");
-                    jsonBody.put("firstName", "Chandresh");
-                    jsonBody.put("lastName", "Paswan");
-                    jsonBody.put("email", "chandreshpas@gmail.com");
-                    jsonBody.put("password", "chandresh");
-                    jsonBody.put("area", "Howrah");
-                    jsonBody.put("landmark", "Pilkhana");
-                    jsonBody.put("address", "Howrah");
+                    jsonBody.put("login", email);
+                    jsonBody.put("firstName", first_name);
+                    jsonBody.put("lastName", last_name);
+                    jsonBody.put("email", email);
+                    jsonBody.put("password", password);
+                    jsonBody.put("area", area);
+                    jsonBody.put("landmark", landmark);
+                    jsonBody.put("address", address);
                     jsonBody.put("dateOfBirth", "1990-06-26");
                     jsonBody.put("cityCode", 241);
                     jsonBody.put("stateCode", 34);
-                    jsonBody.put("phoneNo", 8951748991L);
-                    jsonBody.put("stateName", "West Bengal");
-                    jsonBody.put("cityName", "Howrah");
+                    jsonBody.put("phoneNo",Long.parseLong(mobile_number));
+                    jsonBody.put("stateName", state);
+                    jsonBody.put("cityName", city);
                     jsonBody.put("country", "IN");
                     jsonBody.put("imageUrl", null);
                     jsonBody.put("activated", true);
                     jsonBody.put("langKey", "en");
-                    jsonBody.put("createdBy", "chandresh");
-                    jsonBody.put("createdDate", null);
-                    jsonBody.put("lastModifiedBy", "chandresh");
-                    jsonBody.put("lastModifiedDate", null);
-                    jsonBody.put("role", "ROLE_CONSUMER");
+                    jsonBody.put("role", role);
+
+                    if(role.equalsIgnoreCase("ROLE_PRODUCER")){
+                        jsonBody.put("storeName",store_name);
+                        jsonBody.put("registerDate",register_date);
+                    }
+
 
 
                 } catch (JSONException e) {
@@ -416,13 +419,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 mStoreRegName.setVisibility(View.GONE);
                 mRegDate.setVisibility(View.GONE);
                 mDateBirth.setVisibility(View.VISIBLE);
-
+                role="ROLE_CONSUMER";
                 break;
 
             case R.id.radiobutton_producer:
                 mStoreRegName.setVisibility(View.VISIBLE);
                 mRegDate.setVisibility(View.VISIBLE);
                 mDateBirth.setVisibility(View.GONE);
+                role="ROLE_PRODUCER";
                 store_name = mStoreName.getText().toString().trim();
                 register_date = mRegisterDate.getText().toString().trim();
 
